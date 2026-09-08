@@ -61,9 +61,16 @@ Two checks, both against the spec's `## Behaviour` pairs. Run them before you sh
 user, and **state the result of each one even when it is clean** — a check that reports only on
 failure is indistinguishable from a check that never ran.
 
-**Coverage.** Every "After this spec" half has exactly one ticket that delivers it. Name the ticket
-against each half. A half with no ticket is what this check is for: the common failure is not "a
-ticket forgot something", it is "no ticket became the owner of a promise the spec made".
+**Coverage.** Every "After this spec" half has exactly one **owner**: the ticket that makes that
+behaviour true. Name it against each half.
+
+In a normal vertical slice the owner is the slice itself. In an expand–contract sequence it is the
+**last** ticket of the sequence — the contract, or the integrate-and-verify where there is one.
+The earlier tickets of that sequence own nothing, and their absence from the owner list is the
+correct result, not a gap.
+
+A half with no owner is what this check is for: the common failure is not "a ticket forgot
+something", it is "no ticket became the owner of a promise the spec made".
 
 **Premise.** Any ticket delivering an "After" half whose "Today" half is marked `assumed` rests on
 a fact nobody established. List those tickets with the assumption each one rests on. This is the
