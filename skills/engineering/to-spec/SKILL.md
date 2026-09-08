@@ -30,6 +30,8 @@ Read where reading answers it, measure where it does not. **The user answers nei
   pair. Nothing is written against a picture still being redrawn.
 - **Show the return.** A measurement in the spec carries what it returned, not the fact that it was
   taken.
+- **An `assumed` half is also listed in Unestablished**, with the reason. A mark buried in the body
+  is not a signal.
 
 ## Seams
 
@@ -37,7 +39,13 @@ Sketch the seams at which the feature will be tested. Prefer existing seams to n
 highest seam possible. The fewer seams across the codebase, the better — the ideal number is one.
 If new seams are needed, propose them at the highest point you can.
 
-**Check with the user that these seams match their expectations.**
+Name the existing seam you are proposing and show it — the test, the helper, the boundary that
+already carries this. A seam either exists or it does not, and establishing that is yours, not the
+user's to remember.
+
+Take it to the user only when the choice is real: a NEW seam, and then with what it costs — or a
+pick between existing seams that are equally good on paper, because they know which boundary is
+about to move and the codebase does not.
 
 Use the project's domain glossary throughout, and respect any ADRs in the area you are touching.
 
@@ -59,6 +67,14 @@ The problem the user is facing, from the user's perspective.
 ## Solution
 
 The solution, from the user's perspective.
+
+## Unestablished
+
+Every today half that could not be established, with the reason: no access, no data, no way to
+force the state. It is declared here, before the pairs, so the count reaches the reader before the
+body does.
+
+Empty is the good outcome, and says so: *"none — every today half was read or measured."*
 
 ## Behaviour
 
