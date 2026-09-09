@@ -100,6 +100,26 @@ Use the waiting mechanism from the `orq` skill. What matters here is **what coun
   send a correction — **arm a new wait**. An old wait whose branch for that card is already consumed
   leaves you waiting on something else while the work sits finished and idle.
 
+### The safety loop
+
+**Ending your turn is the cheap way to wait, and it is the one that fails silently.** A worker that
+closes its turn without running `orq done` sends you nothing. The `Stop` hook writes `done` into the
+registry, so `orq ls` is correct — but the registry does not wake anybody, and nothing lands in your
+pane. At that point you are not waiting, you are dead: the board frozen, a PR open with no reviewer
+on it, and no one noticing until the user comes back. A pane that dies mid-turn ends the same way.
+
+So **before you end the first turn after a dispatch, arm a heartbeat of 15 to 20 minutes**
+(`/loop 20m` carrying the check you would otherwise run by hand), and keep it up for as long as
+anything is in flight — worker or reviewer. Each tick: `orq ls` for who went `done` and who is no
+longer there, `gh` for the PRs. Then act, or say your one line and go back to sleep.
+
+It is a seat belt, not a wait. The wake-up from `orq done` is faster and stays the default; the loop
+is what makes silence **bounded** instead of fatal. It costs one line per empty tick and it buys back
+every wake-up that never came.
+
+Take it down when the board closes and nothing is in flight — it is your scaffolding (see
+**Autonomy**).
+
 When the PR appears, before releasing the reviewer:
 
 1. the PR delivers the acceptance criteria;
@@ -325,6 +345,7 @@ take them down — without asking. Asking here is not caution, it is leaving the
 - The user's language to them; the tracker always in English.
 - Read-only until they tell you to dispatch; confirm ambiguous cards.
 - Do not correct a worker in flight — wait for its turn to close.
+- Nothing stays dispatched without a 15–20 min safety loop armed: silence is not success.
 - Every PR passes an adversarial reviewer before the merge. One per card.
 - The reviewer never fixes; you relay verbatim — and arm a new wait for the correction's push.
 - Merging on a clean review is yours; a critical finding does not merge.
