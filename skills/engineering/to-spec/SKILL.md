@@ -190,10 +190,8 @@ enough to have `gh issue create --parent`.
 sub-issue per delivery, **in delivery order**, each in the repo where its own PR will land:
 
 - Same repo as the parent: `gh issue create --parent <parent-number> ...`
-- Another repo: create the issue there, then attach it —
-  `gh api repos/<owner>/<parent-repo>/issues/<parent-number>/sub_issues -F sub_issue_id=<id>`,
-  where `<id>` is the issue's numeric id (`gh api repos/<owner>/<repo>/issues/<n> --jq .id`), not
-  its number. Parent and sub-issue must belong to the same owner.
+- Another repo: `gh issue create --repo <owner>/<repo> --parent <parent-url> ...`. Parent and
+  sub-issue must belong to the same owner.
 
 <sub-issue-template>
 
