@@ -64,15 +64,27 @@ empty section is not the same as a section nobody filled in.
 
 ## Deliveries
 
-**One spec, one PR is the default.** Cut the work into deliveries only when it does not fit one:
-more than one fresh context window can carry, or a diff too wide for a reviewer to hold.
+**One PR per repo the work touches is the default.** A PR lands in one repo, so work that spans two
+repos is two deliveries whatever its size, the repo the other depends on first. Work in one repo is
+one delivery.
+
+**Cut further only with a number in hand.** A delivery is too big when its diff is too wide for a
+reviewer to hold, or it needs more than one fresh context window. Neither is visible before the code
+exists, so the only evidence is measured: the size of a merged PR of comparable work in the same
+repo. Put that number next to the cut. Without one, do not cut.
+
+The prior to distrust is ticket size — what a card used to hold, what a person ships in a day. An
+agent implements this, and every extra delivery adds a merge wait and a review without making any
+one of them easier to hold.
 
 <delivery-rules>
 
-- Each delivery cuts a narrow but COMPLETE path through every layer (schema, API, UI, tests) —
-  vertical, NOT a horizontal slice of one layer
 - A delivery is demoable or verifiable on its own, and lands as one PR
-- Any prefactoring is its own first delivery. "Make the change easy, then make the easy change."
+- Within a repo, a delivery cuts a narrow but COMPLETE path through every layer that repo carries —
+  vertical, NOT a horizontal slice of one layer. Across repos, the ordered deliveries complete the
+  path together
+- Prefactoring rides in the delivery that needs it. It becomes its own first delivery only when it
+  passes the measured rule above. "Make the change easy, then make the easy change."
 - Deliveries are ordered; the next one starts when the previous one merged
 
 </delivery-rules>
@@ -83,12 +95,13 @@ delivery owns is a promise the spec made and nobody will keep.
 **Wide refactors are the exception to vertical slicing.** One mechanical change — rename a column,
 retype a shared symbol — whose blast radius fans across the codebase cannot land green as a
 vertical slice. Sequence it as **expand–contract**: add the new form beside the old; migrate the
-call sites in batches sized by blast radius, one delivery each; delete the old form once no caller
-remains. The After half belongs to the contract delivery.
+call sites in the fewest batches that stay reviewable, one delivery each; delete the old form once no
+caller remains. The After half belongs to the contract delivery.
 
 **Granularity stays with the user.** Whether a delivery is the size they want to see working is
-intent, not fact. Show them the cut — each delivery, and the After halves it makes true — before you
-publish, and ask whether any should be merged or split.
+intent, not fact. Show them the cut before you publish: each delivery, its repo, the After halves it
+makes true, and the measured number behind any cut beyond one per repo. Ask whether it is right. Do
+not offer candidate splits or merges — a menu of cuts to prune turns the default around.
 
 ## Write it
 
@@ -165,7 +178,8 @@ tested, and prior art for those tests in the codebase.
 ## Deliveries
 
 Only when the work was cut. Numbered in order: title, the repo its PR lands in, and the After halves
-it makes true. Omit the section when the spec is one PR.
+it makes true. A cut beyond one per repo carries the measured size that justified it. Omit the
+section when the spec is one PR.
 
 ## Out of Scope
 
