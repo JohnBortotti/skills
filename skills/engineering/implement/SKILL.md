@@ -23,7 +23,14 @@ Docs the change made outdated are updated in the same PR.
 
 Once done, use /code-review to review the work, and fix the real findings.
 
-Commit your work to the current branch and open the PR. Its description says
+Before the first push, name the branch after the issue, renaming the current one in place:
+`git branch -m <n>-<short-slug-of-the-title>`, where `<n>` is the number of the issue this PR closes
+(e.g. `405-lob-mails-a-letter-a-person-approved`). A
+session opened in a worktree sits on a branch named after the session (`worktree-bridge-cse_…`), and
+pushed as is, that name is what the PR carries. Rename, don't create a new branch — the worktree is
+checked out on this one.
+
+Commit your work to that branch and open the PR. Its description says
 `Closes <owner>/<repo>#<n>` for the issue, and also closes the parent spec when this is its last
 delivery.
 
