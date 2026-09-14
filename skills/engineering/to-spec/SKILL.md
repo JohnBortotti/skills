@@ -7,8 +7,6 @@ Take the conversation and the codebase and produce a spec. **Do NOT interview th
 what you already know. When the work was big enough for `grilling`, this runs after it; either way,
 the decisions are already made.
 
-The triage label vocabulary should have been provided to you.
-
 ## The spec is the only artefact nothing makes fail
 
 Lint fails. The suite fails. The adversarial reviewer rejects the PR. The spec does not — and the
@@ -181,8 +179,8 @@ Anything else.
 
 ## Publish
 
-On GitHub Issues, with the `ready-for-agent` label. No further triage. The GitHub CLI must be recent
-enough to have `gh issue create --parent`.
+On GitHub Issues, with no labels. The GitHub CLI must be recent enough to have
+`gh issue create --parent`.
 
 **One PR** → one issue, the whole spec as its body, in the repo where the PR will land.
 
