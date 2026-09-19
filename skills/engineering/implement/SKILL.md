@@ -21,6 +21,13 @@ in the foreground, waiting for it to finish inside the turn.
 
 Docs the change made outdated are updated in the same PR.
 
+**Mutate what you changed.** Once the suite is green, break each guard, condition and call site the
+diff adds — delete it, invert it, return early — and watch a test fail **on its assertion**; a crash or
+an import error proves nothing. Run the repo's own command for this over the diff where it has one. A
+survivor that matters gets the behaviour test that kills it; one that does not gets a line in the PR
+saying why. **Never kill a mutant with a test coupled to the implementation** — pinning a message,
+counting a mock's calls, reading the source: it goes red without holding anything.
+
 Once done, use /code-review to review the work, and fix the real findings.
 
 Before the first push, name the branch after the issue, renaming the current one in place:

@@ -53,12 +53,21 @@ take it from, in order:
 2. **an invariant the spec says may not loosen**, when the PR touches that area;
 3. **what the PR claims to have done** — verify it, do not accept it;
 4. **what the issue promises and is easy to fake** — absences, guards, "does not exist" tests;
-5. **instrumentation the author produced** — check it *in the code*, not in the output it generated.
+5. **instrumentation the author produced** — check it *in the code*, not in the output it generated;
+6. **the survivors the author called harmless** — a PR that mutated its own diff says which mutants its
+   tests do not kill and why each one does not matter. That is a claim like any other: take the one whose
+   behaviour the issue promises and see whether it really is equivalent.
 
 ## Execute
 
 Run the neighbouring suite. Run the guard live. **Reintroduce the defect in a disposable worktree and
 watch the test break.** A commit message is a claim, not a proof.
+
+**Do not spend the review re-running mutations the author already ran.** When the PR mutated its own
+diff, every operator on the changed lines has been flipped once already. Your time goes where that
+could not reach: the lines its report sets aside (a decorated function, a module a cap left out, a
+mutant no test covered), the call site in a file the diff does not touch, and the defects no mutant can
+express — timing, ordering, and what happens with something queued behind it.
 
 ### An absence guard is the one that passes green by accident
 
@@ -91,6 +100,14 @@ So for each absence guard, reintroduce the defect and keep the **failure message
 When the suspicion is "this PR silenced someone else's test", count the pre-existing failures on the
 base branch and compare **names, not counts**. Any test that went fail→pass without the PR claiming
 to fix it is a finding.
+
+### A test written to kill a mutant can be the defect
+
+A surviving mutant names the line a test has to reach, which is exactly the pressure that produces a test
+pinning a message, counting a mock's calls or reading the source: the mutant dies and nothing is held.
+Read every test the PR adds against the survivor it answers, and ask what it fails on. This is an
+observation rather than a critical finding — unless the behaviour it was meant to hold is what the issue
+promised, in which case the promise is unkept and the shape of the test is how it stayed hidden.
 
 ## A decision is not a defect
 
