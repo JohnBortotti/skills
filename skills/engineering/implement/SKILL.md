@@ -1,18 +1,22 @@
 ---
 name: implement
-description: "Implement one issue — a spec, or one delivery of a spec — and open the PR that closes it."
+description: "Implement a change, from an issue, a spec, or the user's prompt, and open its PR."
 disable-model-invocation: true
 ---
 
-Implement the work described by the issue the user points you to.
+Implement the work the user points you to: an issue, or the prompt itself.
 
-Read the whole issue with its comments (`gh issue view <n> --comments`), and the parent spec in full
-when the issue is a delivery of one. A summary of the issue makes you build the summary.
+When there is no issue, the prompt and the conversation are the source. If the user ran /restate, the
+corrected restatement is.
 
-Respect the spec's invariants. **If you disagree with a decision in the spec, argue it in the PR
-instead of changing it on your own.** The spec is what the reviewer checks your code against; a
-silent change leaves it describing something else, and a regressing spec implemented in silence is
-no better. Stopping to ask about an ambiguous instruction is worth more than obeying it.
+When there is an issue, read the whole issue with its comments (`gh issue view <n> --comments`), and
+the parent spec in full when the issue is a delivery of one. A summary of the issue makes you build
+the summary.
+
+When there is a spec, respect its invariants. **If you disagree with a decision in the spec, argue
+it in the PR instead of changing it on your own.** The spec is what the reviewer checks your code
+against; a silent change leaves it describing something else, and a regressing spec implemented in
+silence is no better. Stopping to ask about an ambiguous instruction is worth more than obeying it.
 
 Use /tdd where possible, at the seams the spec names.
 
@@ -28,22 +32,32 @@ survivor that matters gets the behaviour test that kills it; one that does not g
 saying why. **Never kill a mutant with a test coupled to the implementation** — pinning a message,
 counting a mock's calls, reading the source: it goes red without holding anything.
 
-Once done, use /code-review to review the work, and fix the real findings.
+Once done, use /code-review to review the work. When there is no spec, first write down what the
+change is for and what it touches (the PR's Why and Scope) in a file outside the repo, and pass its
+path to /code-review as the spec. Fix the real findings and run /code-review again. Open the PR only
+when it comes back with no real finding. A finding you still disagree with after two rounds goes into
+the PR description, argued.
 
-Before the first push, name the branch after the issue, renaming the current one in place:
-`git branch -m <n>-<short-slug-of-the-title>`, where `<n>` is the number of the issue this PR closes
-(e.g. `405-lob-mails-a-letter-a-person-approved`). A
+Before the first push, rename the current branch in place: `git branch -m <n>-<short-slug>`, where
+`<n>` is the number of the issue this PR closes (e.g. `405-lob-mails-a-letter-a-person-approved`), or
+just `<short-slug>` when it closes none. A
 session opened in a worktree sits on a branch named after the session (`worktree-bridge-cse_…`), and
 pushed as is, that name is what the PR carries. Rename, don't create a new branch — the worktree is
 checked out on this one.
 
-Commit your work to that branch and open the PR. Its description says
+Commit your work to that branch and open the PR. When it closes an issue, its description says
 `Closes <owner>/<repo>#<n>` for the issue, and also closes the parent spec when this is its last
 delivery.
 
-**Evidence.** When the change touches a screen, attach screenshots or a recording to the PR
+**Evidence.** When the repo has a `verify-<app>` skill, use it to exercise the change and capture the
+evidence. When the change touches a screen, attach screenshots or a recording to the PR
 (`gh pr create --attach '<file>#<alt text>'`, or `gh pr comment --attach`), and say what each one
 shows. Open every image before attaching it — a blank screen or a captured error is a finding, not
 evidence. What cannot be photographed, like something called zero times or never requested, gets a
 count from instrumentation instead. When the change touches no screen, say so explicitly in the PR:
 *"this change touches no screen — the evidence is the suite."*
+
+**Adversarial review.** Once the PR is open, spawn one subagent whose whole prompt is
+`Use the adversarial-review skill on <PR URL>.` Nothing else. No summary of what you did, no hint of
+what is fine. It posts its verdict on the PR itself. Do not relay, summarise, or act on the verdict.
+Report the PR URL to the user and stop. The user reads the verdict on the PR and decides.
