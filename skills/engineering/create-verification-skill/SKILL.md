@@ -8,8 +8,6 @@ Write `.claude/skills/verify-<app>/`: a `SKILL.md` and a CLI. The CLI is the poi
 
 You write for an agent that reads the skill cold, mid-task, and has never seen the app.
 
-Adapted from `create-verification-skill` in pstack (MIT, © 2026 Lauren Tan) and `cli-for-agents` in cursor/plugins (MIT, © 2026 Cursor).
-
 ## 1. Read the repo, not the user
 
 Answer from the code. Ask the user only what you cannot observe.

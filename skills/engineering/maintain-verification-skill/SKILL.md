@@ -6,8 +6,6 @@ disable-model-invocation: true
 
 The main path for keeping `verify-<app>` current is the PR that changes what it drives. This pass catches what slipped. One agent, driving serially.
 
-Adapted from `maintain-verification-skill` in pstack (MIT, © 2026 Lauren Tan).
-
 ## Outcomes
 
 Pick one and say which:

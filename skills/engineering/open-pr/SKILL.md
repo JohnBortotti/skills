@@ -6,8 +6,6 @@ disable-model-invocation: true
 
 The description is a briefing, not a lab notebook. A reviewer who has the diff learns from it why the change exists, what is out of scope, and how you proved it works.
 
-Adapted from the `opening-a-pr` playbook of `poteto-mode` in pstack (MIT, © 2026 Lauren Tan).
-
 ## Title
 
 State what is true after the merge. Match the style of the repo's recent merged PRs (`gh pr list --state merged --limit 10`). Name a real symbol when one carries the change. No trailing period.

@@ -6,8 +6,6 @@ disable-model-invocation: true
 
 An instruction works only when the agent reads it, remembers it, and obeys it. A mechanism works without its cooperation. Agents also copy the code around them, so a mistake that already sits in three files lands in the fourth whatever the instructions say.
 
-Adapted from `principle-encode-lessons-in-structure` in pstack (MIT, © 2026 Lauren Tan).
-
 ## Name the lesson
 
 One sentence: the wrong thing, the right thing. Then the two occurrences that make it a lesson: the PRs, the `file:line`, or the correction in this session. One occurrence is a one-off, not a lesson. Say so and stop.

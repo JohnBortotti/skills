@@ -9,8 +9,6 @@ Write prose a person can read once and act on. Apply these rules while you draft
 
 The rules cover prose. Code, commands, identifiers, and quoted text stay as they are.
 
-Adapted from `unslop` and the reply rules of `poteto-mode` in pstack (MIT, © 2026 Lauren Tan).
-
 ## Writing for the reader
 
 - **Lead with what changes for the reader.** Name who the text is for and what they will notice before any implementation detail. If you can't say what they would notice, the text or the work is off.
