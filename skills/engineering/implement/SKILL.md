@@ -1,7 +1,6 @@
 ---
 name: implement
 description: "Implement a change, from an issue, a spec, or the user's prompt, and open its PR."
-disable-model-invocation: true
 ---
 
 Implement the work the user points you to: an issue, or the prompt itself.
