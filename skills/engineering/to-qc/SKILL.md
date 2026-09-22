@@ -22,7 +22,7 @@ that writes into a system you do not own.
 
 ## Interview
 
-Use the `grilling` skill. Look the facts up yourself; these are the user's to answer:
+Look the facts up yourself; these are the user's to answer:
 
 - What worries them most in this release.
 - What must not be touched, and what it costs to skip it.

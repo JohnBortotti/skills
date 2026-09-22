@@ -4,8 +4,7 @@ description: "Turn the current conversation into a spec and publish it as a GitH
 ---
 
 Take the conversation and the codebase and produce a spec. **Do NOT interview the user** — synthesise
-what you already know. When the work was big enough for `grilling`, this runs after it; either way,
-the decisions are already made.
+what you already know. The decisions are already made.
 
 ## The spec is the only artefact nothing makes fail
 
