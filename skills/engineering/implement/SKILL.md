@@ -39,15 +39,15 @@ counting a mock's calls, reading the source: it goes red without holding anythin
 
 Once done, use /code-review to review the work, and pass it the spec: the issue when there is one.
 When there is none, first write down what the change is for and what it touches (the PR's Why and
-Scope) in a file outside the repo, and pass its path. Fix the real findings and run /code-review again. Open the PR only
-when it comes back with no real finding. A finding you still disagree with after two rounds goes into
-the PR description, argued.
+Scope) in a file outside the repo, and pass its path. Fix the real findings and run /code-review
+again. Open the PR only when it comes back with no real finding. A finding you still disagree with
+after two rounds goes into the PR description, argued.
 
 Before the first push, rename the current branch in place: `git branch -m <n>-<short-slug>`, where
 `<n>` is the number of the issue this PR closes (e.g. `412-export-invoices-as-csv`), or just
 `<short-slug>` when it closes none. A session opened in a worktree sits on a branch named after the
-session (`worktree-bridge-cse_…`), and pushed as is, that name is what the PR carries. Rename, don't create a new branch — the worktree is
-checked out on this one.
+session (`worktree-bridge-cse_…`), and pushed as is, that name is what the PR carries. Rename, don't
+create a new branch — the worktree is checked out on this one.
 
 Commit your work to that branch and open the PR. When it closes an issue, its description says
 `Closes <owner>/<repo>#<n>` for the issue, and also closes the parent spec when this is its last
