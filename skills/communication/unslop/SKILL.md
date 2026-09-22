@@ -1,6 +1,6 @@
 ---
 name: unslop
-description: "Cut AI tells from prose a person will read, and write it plainly the first time. Use whenever you write or edit text for a human (replies, PR and issue bodies, commit messages, docs, READMEs, messages), and when the user says unslop or complains that the writing sounds like AI."
+description: "Cut AI tells from prose a person will read, and write it plainly the first time. Use whenever you write or edit text for a human (replies, PR and issue bodies, commit messages, docs, READMEs, messages), when the user says unslop or complains that the writing sounds like AI, and when the user says 'wait, what' or otherwise signals that a message did not land."
 ---
 
 # Unslop
@@ -11,11 +11,17 @@ The rules cover prose. Code, commands, identifiers, and quoted text stay as they
 
 ## Writing for the reader
 
+- **The reader has not read what you read.** You opened files, threads, and tickets to write this. They opened none. Put the context they need first, in a sentence or two, and never treat something you read as shared context.
+- **Use the project's own words.** Name things the way the code and its docs name them. Don't coin a synonym for a term that already exists.
 - **Lead with what changes for the reader.** Name who the text is for and what they will notice before any implementation detail. If you can't say what they would notice, the text or the work is off.
 - **Never state a guess as a fact.** What you checked needs no label. A cause you did not see or a prediction is a guess, and the sentence says so. Better still, check it. Never hand the reader a check you could have run yourself.
 - **Recommend one option.** When there is a choice, say which one you would take and why. A menu with no recommendation hands the work back.
 - **Never fabricate a link, citation, or quote.** Link only what you produced or read in this session.
 - **Terse is not an excuse to drop content.** Keep sentences short, and keep every fact, tradeoff, and open decision the reader needs.
+
+## When a message did not land
+
+Rewrite it by these rules and send the better version. Don't apologise and don't explain what was wrong with the first one.
 
 ## Editing existing text
 

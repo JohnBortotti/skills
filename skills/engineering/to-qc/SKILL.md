@@ -22,7 +22,8 @@ that writes into a system you do not own.
 
 ## Interview
 
-Use the `grilling` skill. Look the facts up yourself; these are the user's to answer:
+Ask in rounds, each one only what the previous answers made askable. Look the facts up yourself;
+these are the user's to answer:
 
 - What worries them most in this release.
 - What must not be touched, and what it costs to skip it.
