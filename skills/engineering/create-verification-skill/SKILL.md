@@ -1,6 +1,6 @@
 ---
 name: create-verification-skill
-description: "Generate a repo-local verify-<app> skill: a small CLI an agent runs to bring the app up, check it is healthy, drive it the way a user does, and capture evidence. Use when a repo has no scripted way to prove behaviour, or when its run-and-test skill is prose an agent re-derives every session."
+description: "Generate a repo-local verify-<app> skill: a small CLI an agent runs to bring the app up, check it is healthy, drive it the way a user does, and capture evidence. Use when a repo has no scripted way to prove behaviour, or when the way to run and test it is prose an agent re-derives every session."
 disable-model-invocation: true
 ---
 
@@ -13,7 +13,7 @@ You write for an agent that reads the skill cold, mid-task, and has never seen t
 Answer from the code. Ask the user only what you cannot observe.
 
 - **Surface.** What does a user touch? A web UI, an API, a CLI, a worker. Pick the primary one and note the rest.
-- **Run.** How does it start? The repo's own commands first: package scripts, compose files, the README, the existing run-and-test skill. Note env vars, seed data, auth, and services it needs from other repos.
+- **Run.** How does it start? The repo's own commands first: package scripts, compose files, the README, any skill or doc that explains how to run it. Note env vars, seed data, auth, and services it needs from other repos.
 - **Drive.** How can a script interact with it? Existing tooling first: Playwright or Cypress specs, HTTP endpoints, a debug port. Then a generic recipe: Playwright as a library for a web UI, plain HTTP for a service, a PTY for a CLI.
 - **Evidence.** What proves a behaviour? Screenshots, response bodies, rows in the database, logs, exit codes.
 
@@ -62,7 +62,7 @@ Design rules:
 - **Proof.** A capture of the app opening is not proof. Exercise the real user path and show the trigger and the resulting state. Run `doctor` first, because evidence from a stale build is not evidence. Check side effects, not only pixels: the response, the row, a reload that shows the state persisted. A mock counts only behind a boundary production also isolates. Name any path you could not reach and what blocked it.
 - **Keep it alive.** A change that moves what this skill drives updates the skill and the CLI in the same PR.
 
-When the repo already has a run-and-test skill, shrink it to point at `verify-<app>` instead of deleting it. Other skills and `CLAUDE.md` may reference it by name. Move every step the CLI now does out of its prose.
+When the repo already has a skill or doc that explains how to run and test the app, shrink it to point at `verify-<app>` instead of deleting it. Other skills and `CLAUDE.md` may reference it by name. Move every step the CLI now does out of its prose.
 
 ## 5. Prove it before handing it over
 

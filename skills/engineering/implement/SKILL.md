@@ -39,7 +39,7 @@ when it comes back with no real finding. A finding you still disagree with after
 the PR description, argued.
 
 Before the first push, rename the current branch in place: `git branch -m <n>-<short-slug>`, where
-`<n>` is the number of the issue this PR closes (e.g. `405-lob-mails-a-letter-a-person-approved`), or
+`<n>` is the number of the issue this PR closes (e.g. `412-export-invoices-as-csv`), or
 just `<short-slug>` when it closes none. A
 session opened in a worktree sits on a branch named after the session (`worktree-bridge-cse_…`), and
 pushed as is, that name is what the PR carries. Rename, don't create a new branch — the worktree is
