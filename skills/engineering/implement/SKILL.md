@@ -18,8 +18,6 @@ it in the PR instead of changing it on your own.** The spec is what the reviewer
 against; a silent change leaves it describing something else, and a regressing spec implemented in
 silence is no better. Stopping to ask about an ambiguous instruction is worth more than obeying it.
 
-Use /tdd where possible, at the seams the spec names.
-
 **No tautological tests.** A test has to be able to fail when the behaviour breaks. Before you keep
 one, ask whether it would still pass if every function it imports returned `undefined`; if it would,
 it tests nothing. The usual shapes: asserting a string or substring the code itself contains (a
