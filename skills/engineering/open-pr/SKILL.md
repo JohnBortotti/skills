@@ -1,7 +1,6 @@
 ---
 name: open-pr
 description: "Write and open a pull request whose description is a briefing a reviewer reads once: why, scope, tradeoffs, blast radius, and how it was verified. Use when opening a PR, or when the user asks to rewrite a PR description."
-disable-model-invocation: true
 ---
 
 The description is a briefing, not a lab notebook. A reviewer who has the diff learns from it why the change exists, what is out of scope, and how you proved it works.
