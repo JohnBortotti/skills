@@ -20,6 +20,13 @@ silence is no better. Stopping to ask about an ambiguous instruction is worth mo
 
 Use /tdd where possible, at the seams the spec names.
 
+**No tautological tests.** A test has to be able to fail when the behaviour breaks. Before you keep
+one, ask whether it would still pass if every function it imports returned `undefined`; if it would,
+it tests nothing. The usual shapes: asserting a string or substring the code itself contains (a
+message, a prompt, a constant), an expected value computed by the code under test, an assertion only
+that a mock was called, and a check on data the test built itself. Call the code with a concrete
+input and assert the literal output or the observable effect, or delete the test.
+
 Run typechecking regularly, single test files regularly, and the full test suite once at the end —
 in the foreground, waiting for it to finish inside the turn.
 
