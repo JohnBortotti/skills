@@ -23,5 +23,3 @@ A few sentences, in the **unslop** skill's rules:
 ## Then stop
 
 Do not plan, start the work, or propose next steps. Wait for the correction. When the user corrects you, restate only what changed.
-
-When the answers open more questions, keep going in rounds. Each round asks only what the previous answers made askable, and the rounds end when no decision is left open.
