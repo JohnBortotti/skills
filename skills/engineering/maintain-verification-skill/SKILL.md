@@ -1,6 +1,6 @@
 ---
 name: maintain-verification-skill
-description: "Check that a repo's verify-<app> skill and its CLI still work against the current app, fix what drifted, and ship at most one PR of proven corrections. Use when the user asks to maintain or audit the verification skill, or before a release QC."
+description: "Check that a repo's verify-<app> skill and its CLI still work against the current app, fix what drifted, and ship at most one PR of proven corrections. Use when the user asks to maintain or audit the verification skill."
 disable-model-invocation: true
 ---
 
